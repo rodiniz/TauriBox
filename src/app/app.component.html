@@ -1,0 +1,50 @@
+   <div class="window">
+		
+      <!-- .toolbar-header sits at the top of your app -->
+      <header class="toolbar toolbar-header">
+			
+       		  <div class="toolbar-actions">
+					
+					{{currentExpanded?.name}}
+				<div class="btn-group">
+				  <button class="btn btn-default" (click)="uploadFile(currentExpanded)">
+					    <span class="icon icon-upload"></span>
+				  </button>
+          <button class="btn btn-default" (click)="createFolder(currentExpanded)">
+            <span class="icon icon-plus"></span>
+        </button>
+       
+        </div>
+		</div>
+      </header>
+
+      <!-- Your app's content goes inside .window-content -->
+      <div class="window-content">
+        <div class="pane-group">
+          <div class="pane pane-sm sidebar">
+            <nav class="nav-group">
+              <h5 class="nav-group-title">root</h5>
+             
+              <span class="nav-group-item" *ngFor="let folder of folders" >
+                <span class="icon"
+                [ngClass]="{'icon-right-dir': !folder.isExpanded, 'icon-down-dir': folder.isExpanded}" 
+                style="cursor:pointer" (click)="listFiles(folder)"></span>
+                {{folder.name}}
+				
+                <span class="nav-group-item" *ngFor="let sub of folder.children">
+                    <span class="icon" style="cursor:pointer" (click)="listFiles(folder)" [ngClass]="{'icon-right-dir': !folder.isExpanded, 'icon-down-dir': folder.isExpanded}" 
+                    style="cursor:pointer"></span>
+                    {{sub.name}}
+                </span>
+              </span>
+              
+            </nav>
+          </div>
+
+          <div class="pane">
+            <app-file-list [dataSource]="files"></app-file-list>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
