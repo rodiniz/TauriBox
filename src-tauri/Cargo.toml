@@ -1,6 +1,6 @@
 [package]
 name = "tauri_box"
-version = "1.0.1"
+version = "1.0.2"
 description = "A Light dropbox client"
 authors = ["Rodrigo Diniz"]
 license = ""
