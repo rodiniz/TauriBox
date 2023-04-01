@@ -88,14 +88,13 @@ jobs:
         run: |
           rustup target add aarch64-apple-darwin
       - name: install frontend dependencies
-        run: npm i -g pnpm && cd gui/web && pnpm install
+        run: npm i &&npm run tauri build
       - uses: tauri-apps/tauri-action@dev
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ''
         with:
-          projectPath: gui
           args: --target ${{ matrix.target }}
           releaseId: ${{ needs.create-release.outputs.release_id }}
           releaseBody: '${{ needs.create-release.outputs.release_note }}'
@@ -122,18 +121,4 @@ jobs:
               draft: false,
               prerelease: false
             })
-  updater:
-    runs-on: ubuntu-latest
-    needs: [build-tauri, publish-release]
-
-    steps:
-      - uses: actions/checkout@v3
-      - run: |
-          mkdir -p ${{ github.workspace }}/docs
-          wget -O ${{ github.workspace }}/docs/latest.json https://github.com/lisiur/wizard/releases/download/${{ github.ref_name }}/latest.json
-
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          publish_dir: ./docs
+ 
