@@ -63,7 +63,12 @@
       "csp": null
     },
     "updater": {
-      "active": false    
+      "active": false,
+      "endpoints": [
+        "https://github.com/rodiniz/TauriBox/releases/download/tauri-box_{{current_version}}_{{arch}}"
+      ],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IHJzaWduIGVuY3J5cHRlZCBzZWNyZXQga2V5ClJXUlRZMEl5WEJlTXp3alVTbzB1Ky9LS1djZDBoUUNhYitLVHViS1o0YlAxcDVNQTlZMEFBQkFBQUFBQUFBQUFBQUlBQUFBQUFhNVN1bWgyck1TdmNiRHVFbnhIc0hhYWFWZ1FoLzhCWXZXWTNwS1dpUTdwUG9ZdWlSQXdibEE2TnJrSGZoTnFQRVg2dzg2V3FpVGQzZ1FsKzJyNUFZc3BBbmR3K0xFZS83MGk0YVdiclVJdDljYkVyMW5xL2xNNWRKNTJteUZTalJxS05JUmtWK3M9Cg=="    
     },
     "windows": [
       {
